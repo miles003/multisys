@@ -16,13 +16,8 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('register', [RegisterController::class, 'store']);
 Route::post('login', [UserController::class, 'authenticate']);
-Route::get('open', 'DataController@open');
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('order', [OrderController::class, 'store']);
