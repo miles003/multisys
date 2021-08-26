@@ -39,10 +39,7 @@ class RegisterController extends Controller
     public function store(RegisterRequest $request)
     {
         try{
-            $filters = $request->validated();
-            $filters['password'] = Hash::make($request->get('password'));
-            User::create($filters);
-            dispatch(new SendEmailJob($request->email));
+            User::create($request->validated());
             return response()->json(['message' => 'User Successfully Registered'], 201);
         }catch(\Exception $e){
             return response()->json(['message' => $e->getMessage()], 500);

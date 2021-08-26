@@ -25,7 +25,7 @@ class LoginTest extends TestCase
         User::factory()->create(
             [
                 'email' => $email,
-                'password' => Hash::make($password)
+                'password' => $password
             ]
         );
 
@@ -42,7 +42,7 @@ class LoginTest extends TestCase
         User::factory()->create(
             [
                 'email' => $email,
-                'password' => Hash::make($password)
+                'password' => $password
             ]
         );
 
